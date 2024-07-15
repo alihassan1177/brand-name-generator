@@ -1,0 +1,42 @@
+:root{
+    --color-primary : #044B8C;
+}
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+.gradient-body {
+    background-image: linear-gradient(to bottom, rgba(228, 242, 255, 100%), white);
+    min-height: 100vh;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: black;
+}
+
+.navbar-brand{
+    font-weight: 900;
+}
+
+.btn-primary{
+    background-color:  #033D73 !important;
+    border-color: var(--color-primary) !important;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.322), var(--color-primary));
+    border: 2px solid var(--color-primary);
+}
+
+.text-primary{
+    color: var(--color-primary) !important;
+}
+
+.main-heading{
+    font-size: 48px;
+    font-weight: 900;
+    max-width: 540px;
+}
+
+.border-primary{
+    border-color: var(--color-primary) !important;
+}
