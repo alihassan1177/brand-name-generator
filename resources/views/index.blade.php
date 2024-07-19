@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Brand Names Generator</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,8 +226,9 @@
     <script>
         document.querySelector("#form").addEventListener("submit", e => e.preventDefault())
         const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-        document.querySelector("#generate-btn").addEventListener("click", ()=>{
+        const generateBtn = document.querySelector("#generate-btn")
+        generateBtn.addEventListener("click", async ()=>{
+            generateBtn.disabled = true
             const prompt = document.querySelector("input[name='prompt']").value
             const is_romantic = document.querySelector("input[name='check-romantic']").checked
             const is_serious = document.querySelector("input[name='check-serious']").checked
@@ -241,7 +242,8 @@
             if (prompt == "") {
                 return
             }
-            getSuggestions(data)
+            await getSuggestions(data)
+            generateBtn.disabled = false
         })     
 
         async function getSuggestions(data) {

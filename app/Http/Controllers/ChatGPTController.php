@@ -10,13 +10,18 @@ class ChatGPTController extends Controller
 {
     function index(Request $request)
     {
+        $number_of_chars = \App\Models\Config::where(['key' => 'number_of_chars'])->first();
+        $number_of_results = \App\Models\Config::where(['key' => 'number_of_results'])->first();
+
+        $number_of_chars = $number_of_chars->value ?? 10;
+        $number_of_results = $number_of_results->value ?? 10;
 
         $prompt = $request->prompt;
         $is_romantic = $request->is_romantic == true ? ", make brand name romantic" : ""; 
         $is_funny = $request->is_funny == true ? ", make brand name funny" : ""; 
         $is_serious = $request->is_serious == true ? ", make brand name serious" : ""; 
 
-        $query = "Give me exact 10 brand names for my $prompt company $is_romantic $is_funny $is_serious and make them comma separated and dont add any text or number other than the names.";
+        $query = "Give me exact $number_of_results brand names that consist of $number_of_chars number of characters for my $prompt company $is_romantic $is_funny $is_serious and make them comma separated and dont add any text or number other than the names.";
 
         $response = Http::withHeaders([
             "Content-type" => "application/json",
