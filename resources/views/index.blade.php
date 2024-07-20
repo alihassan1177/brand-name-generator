@@ -25,8 +25,7 @@
                 <a class="navbar-brand" href="">
                     <img style="max-width: 120px" src="{{ asset($front_logo->value) ?? "" }}" alt="Logo Here">
                 </a>
-                
-                
+                                
                 {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

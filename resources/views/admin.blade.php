@@ -49,7 +49,7 @@
                             value="{{ $brand->value ?? "" }}" name="brand" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="product">Product</label>
+                        <label class="form-label" for="product">Tagline</label>
                         <input type="text" placeholder="Enter <product>" class="form-control" id="product"
                             value="{{ $product->value ?? "" }}" name="product" required>
                     </div>
