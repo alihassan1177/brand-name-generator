@@ -22,8 +22,12 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#">Logo Here</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <a class="navbar-brand" href="">
+                    <img style="max-width: 120px" src="{{ asset($front_logo->value) ?? "" }}" alt="Logo Here">
+                </a>
+                
+                
+                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -52,7 +56,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </nav>
     </header>
@@ -61,16 +65,16 @@
         <section class="mb-5 pb-5">
             <div class="container">
                 <div class="mb-5">
-                    <h1 class="main-heading">AI-Powered <span class="text-primary">&lt;BRAND&gt;</span> Text Generator</h1>
-                    <p>&lt;BRAND&gt; name generator powered by AI. Super creative and way too fun.</p>
+                    <h1 class="main-heading">AI-Powered <span class="text-primary">{{ $brand->value ?? "" }}</span> Text Generator</h1>
+                    <p>{{ $brand->value ?? "" }} name generator powered by AI. Super creative and way too fun.</p>
                 </div>
                 <div>
                     <div class="row">
                         <div class="col-12 col-lg-8">
-                            <p>Generate your unique text for your &lt;product&gt;:</p>
+                            <p>Generate your unique text for your {{ $product->value ?? "" }}:</p>
                             <form id="form">
                                 <div class="d-flex gap-3 mb-3">
-                                    <input type="text" required id="value" name="prompt" class="form-control">
+                                    <input type="text" placeholder="Please say something about yourself, what you like, etc." required id="value" name="prompt" class="form-control">
                                     <button style="max-width: 250px;width: 100%;" type="button" id="generate-btn"
                                         class="btn btn-primary">Generate Text</button>
                                 </div>
@@ -118,7 +122,7 @@
 
         {{-- <section class="mb-5 pb-5">
             <div class="container">
-                <h2 class="text-center mb-3 text-primary">How do I choose a &lt;Brand&gt; username?</h2>
+                <h2 class="text-center mb-3 text-primary">How do I choose a {{ $brand->value ?? "" }} username?</h2>
                 <p class="text-center mb-5">Our mission is providing customers with a reliable source of high income by
                     renting out our high-quality Helium mining routers with minimized risks.</p>
                 <div class="row">

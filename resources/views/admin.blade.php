@@ -29,18 +29,41 @@
 
                 <h3 class="mb-4">Hi Admin</h3>
 
-                <form action="{{ route('config.update') }}" method="POST">
+                <form action="{{ route('config.update') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="form-group mb-3">
                         <label class="form-label" for="number_of_chars">Limit Responses to Charaters</label>
-                        <input type="number" value="{{ $number_of_chars->value }}" placeholder="Enter number of characters" class="form-control"
-                            id="number_of_chars" name="number_of_chars" required>
+                        <input type="number" value="{{ $number_of_chars->value ?? 0 }}"
+                            placeholder="Enter number of characters" class="form-control" id="number_of_chars"
+                            name="number_of_chars" required>
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label" for="number_of_results">Display Results</label>
                         <input type="number" placeholder="Enter number of results" class="form-control"
-                            id="number_of_results" value="{{ $number_of_results->value }}" name="number_of_results" required>
+                            id="number_of_results" value="{{ $number_of_results->value ?? 0 }}" name="number_of_results"
+                            required>
                     </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="brand">Brand</label>
+                        <input type="text" placeholder="Enter <brand>" class="form-control" id="brand"
+                            value="{{ $brand->value ?? "" }}" name="brand" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="product">Product</label>
+                        <input type="text" placeholder="Enter <product>" class="form-control" id="product"
+                            value="{{ $product->value ?? "" }}" name="product" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="front_logo">Front Logo</label>
+                        <input type="file" placeholder="Select Logo" class="form-control" id="front_logo"
+                            name="front_logo">
+                    </div>
+                    @if ($front_logo != null && !empty($front_logo->value))
+                    <div class="mb-3">
+                        <img style="max-width: 120px" src="{{ asset($front_logo->value) ?? "" }}" alt="Front Logo Preview">
+                    </div>
+                    @endif
+
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
